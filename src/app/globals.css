@@ -88,9 +88,6 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
 }
 
 body {
@@ -98,15 +95,7 @@ body {
   background-color: var(--bg-page);
   color: var(--text-main);
   line-height: 1.65;
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
-}
-
-main {
-  overflow-x: hidden;
-  max-width: 100vw;
-  width: 100%;
+  overflow-x: clip;
 }
 
 @media (max-width: 768px) {
