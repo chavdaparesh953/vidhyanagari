@@ -88,6 +88,9 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -96,9 +99,21 @@ body {
   color: var(--text-main);
   line-height: 1.65;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+main {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
+  :root {
+    --container-pad: 16px;
+    --section-pad-y: clamp(48px, 8vw, 72px);
+  }
   body {
     padding-bottom: 64px; /* Space for mobile sticky bottom bar */
   }
@@ -159,12 +174,14 @@ input, select, textarea {
 }
 
 .vn-section-title {
-  font-size: clamp(2.1rem, 3.8vw, 3.25rem);
+  font-size: clamp(1.75rem, 3.8vw, 3.25rem);
   font-weight: 800;
   line-height: 1.18;
   letter-spacing: -0.025em;
   color: var(--navy-900);
   margin-bottom: 18px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .vn-section-title-dark {
@@ -172,11 +189,23 @@ input, select, textarea {
 }
 
 .vn-section-subtitle {
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
   line-height: 1.65;
   color: var(--text-muted);
   max-width: 680px;
   font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .vn-section-title {
+    font-size: clamp(1.4rem, 5.5vw, 1.85rem);
+    line-height: 1.22;
+    margin-bottom: 12px;
+  }
+  .vn-section-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
 }
 
 .vn-section-subtitle-dark {
@@ -301,6 +330,15 @@ input, select, textarea {
   color: var(--navy-900);
   border-color: #ffffff;
   transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .btn-gold,
+  .btn-secondary,
+  .btn-secondary-white {
+    max-width: 100%;
+    white-space: normal;
+  }
 }
 
 .btn-text-link {
@@ -1844,6 +1882,12 @@ input, select, textarea {
   backdrop-filter: blur(8px);
 }
 
+@media (max-width: 768px) {
+  .vn-featured-card {
+    padding: 22px 16px;
+  }
+}
+
 .vn-featured-card:hover {
   background-color: rgba(255, 255, 255, 0.08);
   border-color: var(--gold-400);
@@ -2215,6 +2259,12 @@ input, select, textarea {
   transition: all var(--trans-fast);
 }
 
+@media (max-width: 768px) {
+  .vn-skill-pill-card {
+    padding: 22px 16px;
+  }
+}
+
 .vn-skill-pill-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-card);
@@ -2387,6 +2437,70 @@ input, select, textarea {
   .vn-admissions-box {
     grid-template-columns: 1.15fr 0.85fr;
     align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .vn-admissions-box {
+    padding: 22px 14px;
+    gap: 28px;
+    border-radius: var(--radius-lg);
+  }
+
+  .vn-inquiry-card {
+    padding: 22px 16px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .vn-admissions-desc {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .vn-admission-steps {
+    gap: 14px !important;
+    margin-top: 18px !important;
+  }
+
+  .vn-admission-step {
+    gap: 12px !important;
+  }
+
+  .vn-step-badge {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .vn-step-text h4 {
+    font-size: 0.95rem !important;
+    word-break: break-word !important;
+  }
+
+  .vn-step-text p {
+    font-size: 0.82rem !important;
+  }
+
+  .vn-admissions-helpline {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    margin-top: 24px !important;
+    padding-top: 18px !important;
+  }
+
+  .vn-admissions-helpline .btn-secondary-white {
+    width: 100% !important;
+    white-space: normal !important;
+    padding: 12px 14px !important;
+    font-size: 0.84rem !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .helpline-hours {
+    text-align: center;
   }
 }
 
@@ -2603,6 +2717,39 @@ input, select, textarea {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .vn-contact-info-panel,
+  .vn-map-frame {
+    padding: 22px 16px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .vn-contact-grid {
+    gap: 24px !important;
+    margin-top: 28px !important;
+  }
+
+  .vn-contact-details {
+    gap: 16px !important;
+    margin-top: 18px !important;
+  }
+
+  .vn-contact-point {
+    gap: 12px !important;
+  }
+
+  .vn-contact-text p,
+  .vn-contact-text a {
+    word-break: break-word !important;
+    font-size: 0.92rem !important;
+  }
+
+  .vn-contact-icon {
+    width: 38px !important;
+    height: 38px !important;
+  }
 }
 
 .vn-contact-details {
