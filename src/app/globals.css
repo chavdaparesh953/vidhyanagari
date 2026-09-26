@@ -390,6 +390,32 @@ input, select, textarea {
   font-weight: 600;
 }
 
+.vn-topbar-payment-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(197, 155, 39, 0.16);
+  border: 1px solid rgba(197, 155, 39, 0.4);
+  color: #e5b945;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all var(--trans-fast);
+}
+
+.vn-topbar-payment-pill:hover {
+  background: var(--gold-500);
+  border-color: var(--gold-500);
+  color: #ffffff;
+}
+
+.vn-topbar-payment-pill:hover .text-gold {
+  color: #ffffff !important;
+}
+
 @media (max-width: 580px) {
   .vn-topbar-email {
     display: none !important;
@@ -761,6 +787,27 @@ input, select, textarea {
   font-size: 0.8rem;
   color: var(--slate-600);
   margin-top: 4px;
+}
+
+.vn-mobile-drawer-payment-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(197, 155, 39, 0.1);
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  color: var(--navy-900);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--trans-fast);
+}
+
+.vn-mobile-drawer-payment-link:hover {
+  background: rgba(197, 155, 39, 0.2);
+  border-color: var(--gold-500);
 }
 
 /* ==========================================================================
@@ -2758,6 +2805,28 @@ input, select, textarea {
 .vn-back-to-top-btn:hover {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.12);
+}
+
+.vn-footer-payment-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--trans-fast);
+}
+
+.vn-footer-payment-btn:hover {
+  background: rgba(197, 155, 39, 0.18);
+  border-color: rgba(197, 155, 39, 0.45);
+  color: #ffffff;
 }
 
 /* ==========================================================================

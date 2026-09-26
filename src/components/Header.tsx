@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, Phone, Mail, Download, MapPin } from 'lucide-react';
+import { Menu, X, ArrowRight, Phone, Mail, Download, MapPin, CreditCard, ExternalLink } from 'lucide-react';
 
 interface HeaderProps {
   onOpenEnquiry: (program?: string) => void;
@@ -77,6 +77,18 @@ export default function Header({ onOpenEnquiry, onOpenBrochure }: HeaderProps) {
             <span className="vn-topbar-approvals">
               Approved by AICTE, INC, GNC & NCTE
             </span>
+            <span className="vn-topbar-sep">•</span>
+            <a
+              href="https://www.vidyalayaschoolsoftware.com/erp-login?OrgGroupId=vw4fQpnuC2jIWXAJzmfmsA=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="vn-topbar-payment-pill"
+              title="Pay Student Fees Online via Vidyalaya ERP Portal"
+            >
+              <CreditCard size={12} className="text-gold" />
+              <span>Fee Payment (ERP)</span>
+              <ExternalLink size={10} />
+            </a>
           </div>
         </div>
       </div>
@@ -216,6 +228,17 @@ export default function Header({ onOpenEnquiry, onOpenBrochure }: HeaderProps) {
             <Download size={15} />
             <span>Download Prospectus</span>
           </button>
+
+          <a
+            href="https://www.vidyalayaschoolsoftware.com/erp-login?OrgGroupId=vw4fQpnuC2jIWXAJzmfmsA=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="vn-mobile-drawer-payment-link"
+          >
+            <CreditCard size={15} className="text-gold" />
+            <span>Online Fee Payment (ERP)</span>
+            <ExternalLink size={13} />
+          </a>
 
           <div className="vn-mobile-drawer-phone">
             <Phone size={13} className="text-gold" />

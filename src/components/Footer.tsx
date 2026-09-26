@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Phone, Mail, MapPin, ShieldCheck, GraduationCap } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, GraduationCap, CreditCard, ExternalLink } from 'lucide-react';
 
 interface FooterProps {
   onSelectCategory?: (categoryId: string) => void;
@@ -158,9 +158,20 @@ export default function Footer({ onSelectCategory }: FooterProps) {
               </li>
             </ul>
 
-            <div style={{ marginTop: '18px' }}>
-              <a href="#admissions" className="btn-gold" style={{ padding: '8px 16px', fontSize: '0.8rem', display: 'inline-flex' }}>
+            <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <a href="#admissions" className="btn-gold" style={{ padding: '8px 16px', fontSize: '0.8rem', display: 'inline-flex', justifyContent: 'center' }}>
                 <span>Apply for 2026–27</span>
+              </a>
+              <a
+                href="https://www.vidyalayaschoolsoftware.com/erp-login?OrgGroupId=vw4fQpnuC2jIWXAJzmfmsA=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="vn-footer-payment-btn"
+                title="Pay Student Fees Online via Vidyalaya ERP"
+              >
+                <CreditCard size={14} className="text-gold" />
+                <span>Online Fee Payment (ERP)</span>
+                <ExternalLink size={12} />
               </a>
             </div>
           </div>
