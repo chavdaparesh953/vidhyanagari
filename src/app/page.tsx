@@ -18,6 +18,7 @@ import Footer from '@/components/Footer';
 import EnquiryModal from '@/components/EnquiryModal';
 import BrochureModal from '@/components/BrochureModal';
 import ConversionWidgets from '@/components/ConversionWidgets';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export default function Home() {
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
@@ -117,6 +118,9 @@ export default function Home() {
 
       {/* Desktop Floating Right Tab & Mobile Sticky Action Bar */}
       <ConversionWidgets onOpenEnquiry={() => handleOpenEnquiry()} />
+
+      {/* Floating Circular Progress Scroll-To-Top Button */}
+      <ScrollToTop />
 
       {/* Interactive Global Enquiry Modal */}
       <EnquiryModal

@@ -1,16 +1,13 @@
 'use client';
 
 import React from 'react';
-import { ArrowUp, Phone, Mail, MapPin, ShieldCheck, GraduationCap } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, GraduationCap } from 'lucide-react';
 
 interface FooterProps {
   onSelectCategory?: (categoryId: string) => void;
 }
 
 export default function Footer({ onSelectCategory }: FooterProps) {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   const handleDisciplineClick = (e: React.MouseEvent, categoryId: string) => {
     e.preventDefault();
@@ -177,14 +174,6 @@ export default function Footer({ onSelectCategory }: FooterProps) {
 
           <div className="vn-footer-bottom-actions">
             <span className="vn-footer-trust-tag">Est. 1982 by Dr. D. L. Patel • Himmatnagar, Gujarat</span>
-            <button
-              onClick={scrollToTop}
-              className="vn-back-to-top-btn"
-              aria-label="Back to Top"
-            >
-              <span>Back to Top</span>
-              <ArrowUp size={13} />
-            </button>
           </div>
         </div>
       </div>
