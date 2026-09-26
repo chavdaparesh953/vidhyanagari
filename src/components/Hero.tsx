@@ -15,7 +15,7 @@ export default function Hero({ onOpenEnquiry, onOpenBrochure }: HeroProps) {
   const slides = [
     {
       image: '/images/hero-campus.jpg',
-      badge: 'Admissions Open 2026–27 • Himmatnagar, Gujarat',
+      badge: 'Admissions Open 2026–27 • Himmatnagar',
       category: 'Campus & Heritage',
       headlineStart: 'Where Ambition Meets',
       headlineAccent: 'Enduring Success.',
@@ -24,7 +24,7 @@ export default function Hero({ onOpenEnquiry, onOpenBrochure }: HeroProps) {
     },
     {
       image: '/images/hero-students.jpg',
-      badge: 'Vibrant Academic & Student Community',
+      badge: 'Vibrant Student Community',
       category: 'Student Life',
       headlineStart: 'Practical Learning,',
       headlineAccent: 'Purposeful Growth.',
@@ -33,7 +33,7 @@ export default function Hero({ onOpenEnquiry, onOpenBrochure }: HeroProps) {
     },
     {
       image: '/images/hero-lab.jpg',
-      badge: 'Modern Computing & Research Infrastructure',
+      badge: 'Computing & Research Labs',
       category: 'Labs & Tech',
       headlineStart: 'Modern Laboratories &',
       headlineAccent: 'Applied Technology.',
@@ -42,7 +42,7 @@ export default function Hero({ onOpenEnquiry, onOpenBrochure }: HeroProps) {
     },
     {
       image: '/images/hero-nursing.jpg',
-      badge: 'Healthcare & Clinical Education Hub',
+      badge: 'Healthcare & Clinical Hub',
       category: 'Healthcare & Nursing',
       headlineStart: 'Clinical Healthcare &',
       headlineAccent: 'Compassionate Care.',

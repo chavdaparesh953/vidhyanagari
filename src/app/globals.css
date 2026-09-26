@@ -905,28 +905,48 @@ input, select, textarea {
 .vn-hero-grand-badge {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: rgba(197, 155, 39, 0.16);
   border: 1px solid rgba(197, 155, 39, 0.45);
-  padding: 7px 18px;
+  padding: 5px 14px;
   border-radius: 9999px;
-  font-size: 0.8125rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: #e5b945;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   backdrop-filter: blur(10px);
-  height: 36px;
+  -webkit-backdrop-filter: blur(10px);
+  max-width: 100%;
   animation: heroFadeIn 300ms ease;
 }
 
 .vn-badge-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: #e5b945;
   box-shadow: 0 0 10px #e5b945;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .vn-hero-grand-badge {
+    font-size: 0.6875rem;
+    padding: 4px 10px;
+    gap: 6px;
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .vn-badge-dot {
+    width: 5px;
+    height: 5px;
+  }
 }
 
 /* Fixed-Height Title Slot: Holds exactly 2 lines across all slides — 0 vertical movement */
