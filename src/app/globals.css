@@ -889,8 +889,8 @@ input, select, textarea {
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.65;
-  filter: saturate(0.96);
+  opacity: 0.82;
+  filter: saturate(1.02);
   transform: scale(1.05);
   transition: transform 8000ms cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -904,10 +904,10 @@ input, select, textarea {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(7, 17, 30, 0.96) 0%,
-    rgba(7, 17, 30, 0.85) 45%,
-    rgba(7, 17, 30, 0.48) 78%,
-    rgba(7, 17, 30, 0.28) 100%
+    rgba(7, 17, 30, 0.80) 0%,
+    rgba(7, 17, 30, 0.60) 48%,
+    rgba(7, 17, 30, 0.24) 80%,
+    rgba(7, 17, 30, 0.10) 100%
   );
 }
 
@@ -915,9 +915,9 @@ input, select, textarea {
   .vn-hero-grand-gradient {
     background: linear-gradient(
       180deg,
-      rgba(7, 17, 30, 0.72) 0%,
-      rgba(7, 17, 30, 0.92) 55%,
-      #07111e 100%
+      rgba(7, 17, 30, 0.52) 0%,
+      rgba(7, 17, 30, 0.75) 50%,
+      rgba(7, 17, 30, 0.88) 100%
     );
   }
 }
