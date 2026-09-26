@@ -3,9 +3,22 @@
 import React from 'react';
 import { ArrowUp, Phone, Mail, MapPin, ShieldCheck, GraduationCap } from 'lucide-react';
 
-export default function Footer() {
+interface FooterProps {
+  onSelectCategory?: (categoryId: string) => void;
+}
+
+export default function Footer({ onSelectCategory }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleDisciplineClick = (e: React.MouseEvent, categoryId: string) => {
+    e.preventDefault();
+    onSelectCategory?.(categoryId);
+    const el = document.getElementById('programs');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -44,13 +57,62 @@ export default function Footer() {
           <div className="vn-footer-col">
             <h5>Academic Disciplines</h5>
             <ul className="vn-footer-links">
-              <li><a href="#programs">Management (MBA, BBA, B.Com)</a></li>
-              <li><a href="#programs">Computer Applications (MCA, BCA, PGDCA)</a></li>
-              <li><a href="#programs">Healthcare (B.Sc. Nursing, GNM, ANM)</a></li>
-              <li><a href="#programs">Applied Sciences (B.Sc., M.Sc.)</a></li>
-              <li><a href="#programs">Teacher Education (B.Ed., M.Ed., D.El.Ed.)</a></li>
-              <li><a href="#programs">Law & Social Sciences (LL.B., M.S.W.)</a></li>
-              <li><a href="#programs">Parulba ITI (MLT & Stenography)</a></li>
+              <li>
+                <a
+                  href="#programs"
+                  onClick={(e) => handleDisciplineClick(e, 'management')}
+                >
+                  Management (MBA, BBA, B.Com)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#programs"
+                  onClick={(e) => handleDisciplineClick(e, 'technology')}
+                >
+                  Computer Applications (MCA, BCA, PGDCA)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#programs"
+                  onClick={(e) => handleDisciplineClick(e, 'healthcare')}
+                >
+                  Healthcare (B.Sc. Nursing, GNM, ANM)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#programs"
+                  onClick={(e) => handleDisciplineClick(e, 'science')}
+                >
+                  Applied Sciences (B.Sc., M.Sc.)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#programs"
+                  onClick={(e) => handleDisciplineClick(e, 'education')}
+                >
+                  Teacher Education (B.Ed., M.Ed., D.El.Ed.)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#programs"
+                  onClick={(e) => handleDisciplineClick(e, 'legal')}
+                >
+                  Law & Social Sciences (LL.B., M.S.W.)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#programs"
+                  onClick={(e) => handleDisciplineClick(e, 'vocational')}
+                >
+                  Parulba ITI (MLT & Stenography)
+                </a>
+              </li>
             </ul>
           </div>
 

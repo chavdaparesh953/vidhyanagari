@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { ArrowRight, BookOpen, Laptop, Microscope, Stethoscope, GraduationCap, Scale, Wrench, Search, X, Check, ShieldCheck, Clock, Award } from 'lucide-react';
 
 interface ProgramExplorerProps {
   onSelectProgram: (programName: string) => void;
+  selectedCategory?: string;
+  onCategoryChange?: (categoryId: string) => void;
 }
 
 interface ProgramItem {
@@ -26,9 +28,25 @@ interface ProgramCategory {
   programs: ProgramItem[];
 }
 
-export default function ProgramExplorer({ onSelectProgram }: ProgramExplorerProps) {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+export default function ProgramExplorer({
+  onSelectProgram,
+  selectedCategory,
+  onCategoryChange,
+}: ProgramExplorerProps) {
+  const [activeCategory, setActiveCategory] = useState<string>(selectedCategory || 'all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+
+  useEffect(() => {
+    if (selectedCategory) {
+      setActiveCategory(selectedCategory);
+      setSearchQuery('');
+    }
+  }, [selectedCategory]);
+
+  const handleCategorySelect = (catId: string) => {
+    setActiveCategory(catId);
+    onCategoryChange?.(catId);
+  };
 
   const categories: ProgramCategory[] = [
     {
@@ -336,7 +354,7 @@ export default function ProgramExplorer({ onSelectProgram }: ProgramExplorerProp
         {/* Tab Filters */}
         <div className="vn-prog-tabs-bar" role="tablist">
           <button
-            onClick={() => setActiveCategory('all')}
+            onClick={() => handleCategorySelect('all')}
             className={`vn-prog-tab-btn ${activeCategory === 'all' ? 'active' : ''}`}
             role="tab"
             aria-selected={activeCategory === 'all'}
@@ -346,7 +364,7 @@ export default function ProgramExplorer({ onSelectProgram }: ProgramExplorerProp
           {categories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
+              onClick={() => handleCategorySelect(cat.id)}
               className={`vn-prog-tab-btn ${activeCategory === cat.id ? 'active' : ''}`}
               role="tab"
               aria-selected={activeCategory === cat.id}
@@ -366,7 +384,7 @@ export default function ProgramExplorer({ onSelectProgram }: ProgramExplorerProp
           {(activeCategory !== 'all' || searchQuery) && (
             <button
               onClick={() => {
-                setActiveCategory('all');
+                handleCategorySelect('all');
                 setSearchQuery('');
               }}
               className="vn-prog-reset-link"

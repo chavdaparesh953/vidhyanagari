@@ -24,6 +24,8 @@ export default function Home() {
   const [brochureModalOpen, setBrochureModalOpen] = useState(false);
   const [selectedProgram, setSelectedProgram] = useState<string>('');
 
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+
   const handleOpenEnquiry = (programName?: string) => {
     if (programName) {
       setSelectedProgram(programName);
@@ -46,6 +48,14 @@ export default function Home() {
   const handleProgramSelectFromExplorer = (programName: string) => {
     setSelectedProgram(programName);
     setEnquiryModalOpen(true);
+  };
+
+  const handleCategorySelect = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    const el = document.getElementById('programs');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -72,7 +82,11 @@ export default function Home() {
       <WhyVidhyanagari />
 
       {/* 6. Comprehensive Programs Explorer with Live Search & Tabs */}
-      <ProgramExplorer onSelectProgram={handleProgramSelectFromExplorer} />
+      <ProgramExplorer
+        onSelectProgram={handleProgramSelectFromExplorer}
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+      />
 
       {/* 7. Curated Flagship Featured Programs (Dark Mode Showcase) */}
       <FeaturedPrograms onSelectProgram={handleProgramSelectFromExplorer} />
@@ -99,7 +113,7 @@ export default function Home() {
       <ContactSection onOpenEnquiry={() => handleOpenEnquiry()} />
 
       {/* 14. Academic Footer with Official Logo & Links */}
-      <Footer />
+      <Footer onSelectCategory={handleCategorySelect} />
 
       {/* Desktop Floating Right Tab & Mobile Sticky Action Bar */}
       <ConversionWidgets onOpenEnquiry={() => handleOpenEnquiry()} />
