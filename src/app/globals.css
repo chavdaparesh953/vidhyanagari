@@ -3011,8 +3011,10 @@ input, select, textarea {
 
 .vn-scroll-progress-svg {
   position: absolute;
-  top: 1px;
-  left: 1px;
+  inset: 0;
+  margin: auto;
+  width: 46px;
+  height: 46px;
   transform: rotate(-90deg);
   transform-origin: center;
   pointer-events: none;
@@ -3047,8 +3049,6 @@ input, select, textarea {
   .vn-scroll-to-top-btn {
     bottom: 74px; /* Positions cleanly above the mobile sticky conversion bar */
     right: 18px;
-    width: 44px;
-    height: 44px;
   }
 }
 
