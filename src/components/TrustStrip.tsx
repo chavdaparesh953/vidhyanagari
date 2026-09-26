@@ -1,9 +1,74 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Landmark, Building2, BookOpen, ShieldCheck } from 'lucide-react';
 
+function useCounter(target: number, duration: number = 1600, start: number = 0, isVisible: boolean = false) {
+  const [count, setCount] = useState<number>(target);
+  const animatedRef = useRef(false);
+
+  useEffect(() => {
+    if (!isVisible || animatedRef.current) return;
+    animatedRef.current = true;
+
+    let startTime: number | null = null;
+    let animationFrameId: number;
+
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Buttery-smooth easeOutCubic deceleration curve
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(start + (target - start) * easeProgress);
+      setCount(current);
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(step);
+      } else {
+        setCount(target);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isVisible, target, duration, start]);
+
+  return count;
+}
+
 export default function TrustStrip() {
+  const [isVisible, setIsVisible] = useState(false);
+  const boardRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (boardRef.current) {
+      observer.observe(boardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const yearCount = useCounter(1982, 1600, 1920, isVisible);
+  const institutesCount = useCounter(12, 1400, 0, isVisible);
+  const schoolsCount = useCounter(5, 1200, 0, isVisible);
+  const verifiedCount = useCounter(100, 1600, 0, isVisible);
+
   const credentials = [
     'AICTE Approved (MBA & MCA)',
     'Indian Nursing Council (INC) Recognized',
@@ -50,7 +115,7 @@ export default function TrustStrip() {
           </div>
 
           {/* Stately Institutional Stat Counter Block */}
-          <div className="vn-intro-stat-board">
+          <div ref={boardRef} className="vn-intro-stat-board">
             {/* Card 1: 1982 */}
             <div className="vn-intro-stat-card">
               <div className="vn-stat-card-header">
@@ -59,7 +124,7 @@ export default function TrustStrip() {
                 </div>
                 <span className="vn-stat-pill">Est. 1982</span>
               </div>
-              <div className="vn-stat-value">1982</div>
+              <div className="vn-stat-value">{yearCount}</div>
               <h3 className="vn-stat-title">Founding Heritage</h3>
               <p className="vn-stat-desc">
                 Four decades of educational stewardship under Vishwa Mangalam Education Trust.
@@ -74,7 +139,10 @@ export default function TrustStrip() {
                 </div>
                 <span className="vn-stat-pill">Institutes</span>
               </div>
-              <div className="vn-stat-value">12<span className="vn-stat-suffix">+</span></div>
+              <div className="vn-stat-value">
+                {institutesCount}
+                <span className="vn-stat-suffix">+</span>
+              </div>
               <h3 className="vn-stat-title">Higher Ed Colleges</h3>
               <p className="vn-stat-desc">
                 Covering MBA, MCA, Nursing, B.Sc., M.Sc., B.Ed., M.Ed., Law, and ITI vocations.
@@ -89,7 +157,9 @@ export default function TrustStrip() {
                 </div>
                 <span className="vn-stat-pill">K-12 Network</span>
               </div>
-              <div className="vn-stat-value">05</div>
+              <div className="vn-stat-value">
+                {String(schoolsCount).padStart(2, '0')}
+              </div>
               <h3 className="vn-stat-title">Integrated Schools</h3>
               <p className="vn-stat-desc">
                 Continuous learning ecosystem from kindergarten to higher secondary certification.
@@ -104,7 +174,10 @@ export default function TrustStrip() {
                 </div>
                 <span className="vn-stat-pill vn-stat-pill-gold">100% Verified</span>
               </div>
-              <div className="vn-stat-value">100<span className="vn-stat-suffix">%</span></div>
+              <div className="vn-stat-value">
+                {verifiedCount}
+                <span className="vn-stat-suffix">%</span>
+              </div>
               <h3 className="vn-stat-title">Statutory Approvals</h3>
               <p className="vn-stat-desc">
                 Compliant with AICTE, INC, GNC, NCTE, and state university academic governance.
